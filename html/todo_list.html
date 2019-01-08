@@ -6,13 +6,11 @@
     <title>Todo List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../css/todo_list.css"/>
-    <script src="../js/viewModel.js"></script>
-    <script src="../js/view.js"></script>
   </head>
   <body>
     <h1 class="text_center">Todo List</h1>
     <div class="container">
-      <input id="todo" class="" type="text" placeholder="请输入待办事项，按回车键确认" value=""/>
+      <input id="todo" class="" minlength="1" type="text" placeholder="请输入待办事项，按回车键确认" value="" onkeydown="enter()"/>
       <div class="content">
         <ul id="todo_list"></ul>
         <p id="left_item">Left items:</p>
@@ -25,4 +23,6 @@
       </div>
     </div>
   </body>
+  <script src="../js/viewModel.js"></script>
+  <script src="../js/view.js"></script>
 </html>
