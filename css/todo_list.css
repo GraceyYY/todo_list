@@ -29,7 +29,6 @@ li {
 
 li:hover {
   cursor: pointer;
-/*  opacity: 0.6;*/
   background-color: #c4d6c2;
 }
 
@@ -104,7 +103,6 @@ li:hover {
 }
 
 #clear_btn {
-  display: block;
   float: right;
   width: 160px;
   height: 40px;
