@@ -51,10 +51,17 @@ function createItem(index, todo) {
 function completeItem() {
   hasCompleted(event.target.id);
   updateCurrentTab();
+  updateLeftItems();
 }
 
 function deleteItem() {
   removeTodo(event.target.previousSibling.id);
+  updateCurrentTab();
+  updateLeftItems();
+}
+
+function clearCompleted() {
+  removeCompleted();
   updateCurrentTab();
 }
 

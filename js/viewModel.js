@@ -48,7 +48,7 @@ function hasCompleted(index) {
 
 function removeCompleted() {
   getTodos('completed').forEach(item => {
-    localStorage.removeItem(item.index);
+    removeTodo(item.index);
   });
 }
 
