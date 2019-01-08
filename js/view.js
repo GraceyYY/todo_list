@@ -45,6 +45,7 @@ function createItem(index, todo) {
 
 function completeItem(){
     hasCompleted(event.target.id);
+    updateCurrentTab();
 }
 
 function clearTodoList() {
@@ -64,4 +65,18 @@ function switchToTab(btnId) {
 
 function updateLeftItems(){
     leftItem.innerText = `Left items: ${localStorage.getItem('active')}`;
+}
+
+function updateCurrentTab(){
+    switch (currentTab){
+        case 'all':
+        displayAll();
+        break;
+        case 'active':
+        displayActiveList();
+        break;
+        case 'completed':
+        displayCompletedList();
+        break;
+    }
 }
