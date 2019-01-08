@@ -8,6 +8,19 @@ const btns = document.getElementsByClassName('btn');
 const leftItem = document.getElementById('left_item');
 let currentTab = 'all';
 
+initTodo();
+
+function initTodo() {
+  if (localStorage.getItem('active') >= 0 && localStorage.getItem('completed') >= 0) {
+    toggleClearBtn();
+    updateCurrentTab();
+    updateLeftItems();
+  } else {
+    localStorage.setItem('active', 0);
+    localStorage.setItem('completed', 0);
+  }
+}
+
 function displayActiveList() {
   switchToTab('active_btn');
   clearTodoList();
@@ -34,18 +47,13 @@ function displayAll() {
   })
 }
 
-function createItem(index, todo) {
-  let li = document.createElement('li');
-  li.innerText = todo.content;
-  li.id = index;
-  li.setAttribute('onclick', 'completeItem()');
-  let btn = document.createElement('button');
-  btn.innerText = 'X';
-  btn.classList.add('delete_btn');
-  btn.setAttribute('onclick', 'deleteItem()');
-  todoList.appendChild(li);
-  todoList.appendChild(btn);
-  return li;
+function enter() {
+  if (event.keyCode === 13) {
+    appendTodo(input.value);
+    updateCurrentTab();
+    updateLeftItems();
+    toggleClearBtn();
+  }
 }
 
 function completeItem() {
@@ -68,6 +76,20 @@ function clearCompleted() {
   removeCompleted();
   updateCurrentTab();
   toggleClearBtn();
+}
+
+function createItem(index, todo) {
+  let li = document.createElement('li');
+  li.innerText = todo.content;
+  li.id = index;
+  li.setAttribute('onclick', 'completeItem()');
+  let btn = document.createElement('button');
+  btn.innerText = 'X';
+  btn.classList.add('delete_btn');
+  btn.setAttribute('onclick', 'deleteItem()');
+  todoList.appendChild(li);
+  todoList.appendChild(btn);
+  return li;
 }
 
 function clearTodoList() {
@@ -101,23 +123,6 @@ function updateCurrentTab() {
       displayCompletedList();
       break;
   }
-}
-
-function enter() {
-  if (event.keyCode === 13) {
-    appendTodo(input.value);
-    updateCurrentTab();
-    updateLeftItems();
-    toggleClearBtn();
-  }
-}
-
-function initTodo() {
-  alert('d');
-  console.log('sdf');
-  if (localStorage.getItem('active') && localStorage.getItem('completed')) {}
-  localStorage.setItem('active', 0);
-  localStorage.setItem('completed', 0);
 }
 
 function toggleClearBtn() {

@@ -5,11 +5,6 @@ class Todo {
   }
 }
 
-function initTodo() {
-  localStorage.setItem('active', 0);
-  localStorage.setItem('completed', 0);
-}
-
 function editCounts(name, operation) {
   let count = parseInt(localStorage.getItem(name));
   switch (operation) {
