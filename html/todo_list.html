@@ -11,16 +11,18 @@
     <script src="../js/view.js"></script>
   </head>
   <body>
-    <h1>Todo List</h1>
+    <h1 class="text_center">Todo List</h1>
     <div class="container">
-      <input type="text" placeholder="请输入待办事项，按回车确认" value=""/>
-      <ul id="todo_list"></ul>
-      <p id="left_item">Left items:</p>
+      <input id="todo" class="" type="text" placeholder="请输入待办事项，按回车键确认" value=""/>
+      <div class="content">
+        <ul id="todo_list"></ul>
+        <p id="left_item">Left items:</p>
+      </div>
       <div class="panel">
-        <button id="all">ALL</button>
-        <button id="active">ACTIVE</button>
-        <button id="completed">COMPLETED</button>
-        <button id="clear">CLEAR COMPLETED</button>
+        <button class="btn active" id="all_btn">ALL</button>
+        <button class="btn" id="active_btn">ACTIVE</button>
+        <button class="btn" id="completed_btn">COMPLETED</button>
+        <button class="" id="clear_btn">CLEAR COMPLETED</button>
       </div>
     </div>
   </body>
