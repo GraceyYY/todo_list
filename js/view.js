@@ -57,3 +57,6 @@ function switchToTab(btnId) {
   currentTab = btnId.split('_')[0];
 }
 
+function updateLeftItems(){
+    leftItem.innerText = `Left items: ${localStorage.getItem('active')}`;
+}
