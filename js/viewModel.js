@@ -35,7 +35,7 @@ function appendTodo(input) {
 function hasCompleted(index) {
   let todo = JSON.parse(localStorage.getItem(index));
   todo.state = 'completed';
-  localStorage.setItem(index, todo);
+  localStorage.setItem(index, JSON.stringify(todo));
   editCounts('active', 'minus');
   editCounts('completed', 'plus');
 }
