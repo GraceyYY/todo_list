@@ -9,7 +9,9 @@ function getTodos(state) {
     let key = localStorage.key(i);
     let todo = JSON.parse(localStorage.getItem(key));
     if (todo.state === state) {
-      result.unshift(todo);
+      result.unshift({
+        key: todo
+      });
     }
   }
   return result;
