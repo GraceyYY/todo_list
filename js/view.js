@@ -5,6 +5,8 @@ const allBtn = document.getElementById('all_btn');
 const completedBtn = document.getElementById('completed_btn');
 const clearBtn = document.getElementById('clear_btn');
 const btns = document.getElementsByClassName('btn');
+const leftItem = document.getElementById('left_item');
+let currentTab = 'all';
 
 function displayActiveList() {
   switchToTab('active_btn');
@@ -17,7 +19,7 @@ function displayCompletedList() {
   clearTodoList();
   getTodos('completed').forEach(item => {
     let li = createItem(item.index, item.todo);
-    li.addClass('deleted');
+    li.classList.add('deleted');
   });
 }
 
@@ -27,7 +29,7 @@ function displayAll() {
   getTodos('all').forEach(item => {
     let li = createItem(item.index, item.todo);
     if (item.todo.state === 'completed') {
-      li.addClass('deleted');
+      li.classList.add('deleted');
     }
   })
 }
@@ -52,4 +54,6 @@ function switchToTab(btnId) {
       btn.classList.remove('active');
     }
   }
+  currentTab = btnId.split('_')[0];
 }
+
