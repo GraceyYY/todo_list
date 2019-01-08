@@ -38,14 +38,24 @@ function createItem(index, todo) {
   let li = document.createElement('li');
   li.innerText = todo.content;
   li.id = index;
-  li.setAttribute('onclick','completeItem()');
+  li.setAttribute('onclick', 'completeItem()');
+  let btn = document.createElement('button');
+  btn.innerText = 'X';
+  btn.classList.add('delete_btn');
+  btn.setAttribute('onclick', 'deleteItem()');
   todoList.appendChild(li);
+  todoList.appendChild(btn);
   return li;
 }
 
-function completeItem(){
-    hasCompleted(event.target.id);
-    updateCurrentTab();
+function completeItem() {
+  hasCompleted(event.target.id);
+  updateCurrentTab();
+}
+
+function deleteItem() {
+  removeTodo(event.target.previousSibling.id);
+  updateCurrentTab();
 }
 
 function clearTodoList() {
@@ -63,20 +73,20 @@ function switchToTab(btnId) {
   currentTab = btnId.split('_')[0];
 }
 
-function updateLeftItems(){
-    leftItem.innerText = `Left items: ${localStorage.getItem('active')}`;
+function updateLeftItems() {
+  leftItem.innerText = `Left items: ${localStorage.getItem('active')}`;
 }
 
-function updateCurrentTab(){
-    switch (currentTab){
-        case 'all':
-        displayAll();
-        break;
-        case 'active':
-        displayActiveList();
-        break;
-        case 'completed':
-        displayCompletedList();
-        break;
-    }
+function updateCurrentTab() {
+  switch (currentTab) {
+    case 'all':
+      displayAll();
+      break;
+    case 'active':
+      displayActiveList();
+      break;
+    case 'completed':
+      displayCompletedList();
+      break;
+  }
 }

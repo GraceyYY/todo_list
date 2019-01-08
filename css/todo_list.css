@@ -21,9 +21,16 @@ button {
 
 li {
   font-size: 18px;
-  width: 540px;
+  width: 510px;
   padding-top: 12px;
   border-bottom: solid 1px #c0d3be;
+  word-break: break-all;
+}
+
+li:hover {
+  cursor: pointer;
+/*  opacity: 0.6;*/
+  background-color: #c4d6c2;
 }
 
 .btn:hover {
@@ -63,6 +70,16 @@ li {
 .deleted {
   color: #4d544c;
   text-decoration: line-through;
+}
+
+.delete_btn {
+  display: block;
+  float: right;
+  position: relative;
+  top: -25px;
+  right: 20px;
+  height: 25px;
+  border-radius: 5px;
 }
 
 #todo {
