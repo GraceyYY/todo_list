@@ -7,7 +7,6 @@ const clearBtn = document.getElementById('clear_btn');
 const btns = document.getElementsByClassName('btn');
 const leftItem = document.getElementById('left_item');
 let currentTab = 'all';
-
 initTodo();
 
 function initTodo() {
@@ -53,6 +52,7 @@ function enter() {
     updateCurrentTab();
     updateLeftItems();
     toggleClearBtn();
+    input.value = '';
   }
 }
 
