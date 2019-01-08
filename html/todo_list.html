@@ -10,19 +10,20 @@
   <body>
     <h1 class="text_center">Todo List</h1>
     <div class="container">
-      <input id="todo" class="" minlength="1" type="text" placeholder="请输入待办事项，按回车键确认" value="" onkeydown="enter()"/>
+      <input id="todo" class="" minlength="1" type="text" placeholder="请输入待办事项，按回车键确认" value="" onkeydown="enter()" autofocus />
       <div class="content">
         <ul id="todo_list"></ul>
-        <p id="left_item">Left items:</p>
+        <p id="left_item">Left items: 0</p>
       </div>
       <div class="panel">
-        <button class="btn active" id="all_btn">ALL</button>
-        <button class="btn" id="active_btn">ACTIVE</button>
-        <button class="btn" id="completed_btn">COMPLETED</button>
+        <button class="btn active" id="all_btn" onclick="displayAll()">ALL</button>
+        <button class="btn" id="active_btn" onclick="displayActiveList()">ACTIVE</button>
+        <button class="btn" id="completed_btn" onclick="displayCompletedList()">COMPLETED</button>
         <button class="" id="clear_btn">CLEAR COMPLETED</button>
       </div>
     </div>
   </body>
   <script src="../js/viewModel.js"></script>
   <script src="../js/view.js"></script>
+  <script src="../js/todo_list.js"></script>
 </html>

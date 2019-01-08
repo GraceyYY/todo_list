@@ -19,6 +19,13 @@ button {
   transition: 0.3s;
 }
 
+li {
+  font-size: 18px;
+  width: 540px;
+  padding-top: 12px;
+  border-bottom: solid 1px #c0d3be;
+}
+
 .btn:hover {
   text-decoration: underline;
   background-color: #d6e0d5;
@@ -62,10 +69,13 @@ button {
   width: 600px;
   height: 50px;
   font-size: 18px;
+  padding-left: 20px;
 }
 
 #todo_list {
+  max-height: 360px;
   overflow: scroll;
+  padding-top: 10px;
 }
 
 #left_item {
