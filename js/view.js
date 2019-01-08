@@ -49,7 +49,10 @@ function createItem(index, todo) {
 }
 
 function completeItem() {
-  hasCompleted(event.target.id);
+  let item = JSON.parse(localStorage.getItem(event.target.id));
+  if (item.state != 'completed') {
+    hasCompleted(event.target.id);
+  }
   updateCurrentTab();
   updateLeftItems();
 }
@@ -58,11 +61,13 @@ function deleteItem() {
   removeTodo(event.target.previousSibling.id);
   updateCurrentTab();
   updateLeftItems();
+  toggleClearBtn();
 }
 
 function clearCompleted() {
   removeCompleted();
   updateCurrentTab();
+  toggleClearBtn();
 }
 
 function clearTodoList() {
@@ -95,5 +100,30 @@ function updateCurrentTab() {
     case 'completed':
       displayCompletedList();
       break;
+  }
+}
+
+function enter() {
+  if (event.keyCode === 13) {
+    appendTodo(input.value);
+    updateCurrentTab();
+    updateLeftItems();
+    toggleClearBtn();
+  }
+}
+
+function initTodo() {
+  alert('d');
+  console.log('sdf');
+  if (localStorage.getItem('active') && localStorage.getItem('completed')) {}
+  localStorage.setItem('active', 0);
+  localStorage.setItem('completed', 0);
+}
+
+function toggleClearBtn() {
+  if (getTodoCounts() > 1) {
+    clearBtn.classList.remove('hide');
+  } else {
+    clearBtn.classList.add('hide');
   }
 }
