@@ -38,8 +38,13 @@ function createItem(index, todo) {
   let li = document.createElement('li');
   li.innerText = todo.content;
   li.id = index;
+  li.setAttribute('onclick','completeItem()');
   todoList.appendChild(li);
   return li;
+}
+
+function completeItem(){
+    hasCompleted(event.target.id);
 }
 
 function clearTodoList() {
