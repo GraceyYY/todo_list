@@ -43,7 +43,6 @@ button {
   opacity: 0.6;
   position: relative;
   margin-top: 10px;
-  color: #4d544c;
 }
 
 .active {
@@ -52,6 +51,11 @@ button {
 
 .hide {
   display: none;
+}
+
+.deleted {
+  color: #4d544c;
+  text-decoration: line-through;
 }
 
 #todo {

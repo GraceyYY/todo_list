@@ -53,14 +53,21 @@ function getTodoCounts() {
 function getTodos(state) {
   let counts = getTodoCounts();
   let result = [];
-  for (let i = 1; i <= counts; i++) {
+  for (let i = 0; i < counts; i++) {
     let key = localStorage.key(i);
     let todo = JSON.parse(localStorage.getItem(key));
-    if (todo.state === state) {
+    if (state === 'all') {
       result.unshift({
         'index': key,
         'todo': todo
       });
+    } else {
+      if (todo.state === state) {
+        result.unshift({
+          'index': key,
+          'todo': todo
+        });
+      }
     }
   }
   return result;
