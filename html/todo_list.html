@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/todo_list.css"/>
+    <script src="../js/viewModel.js"></script>
+    <script src="../js/model.js"></script>
+    <script src="../js/view.js"></script>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <div class="container">
+      <input type="text" placeholder="请输入待办事项，按回车确认" value=""/>
+      <ul id="todo_list"></ul>
+      <p id="left_item">Left items:</p>
+      <div class="panel">
+        <button id="all">ALL</button>
+        <button id="active">ACTIVE</button>
+        <button id="completed">COMPLETED</button>
+        <button id="clear">CLEAR COMPLETED</button>
+      </div>
+    </div>
+  </body>
+</html>
