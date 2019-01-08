@@ -10,7 +10,7 @@ let currentTab = 'all';
 initTodo();
 
 function initTodo() {
-  if (localStorage.getItem('active') >= 0 && localStorage.getItem('completed') >= 0) {
+  if (localStorage.getItem('active') != null && localStorage.getItem('completed') != null) {
     toggleClearBtn();
     updateCurrentTab();
     updateLeftItems();
@@ -47,12 +47,12 @@ function displayAll() {
 }
 
 function enter() {
-  if (event.keyCode === 13) {
+  if (event.keyCode === 13 && input.value.length > 1) {
     appendTodo(input.value);
+    input.value = '';
     updateCurrentTab();
     updateLeftItems();
     toggleClearBtn();
-    input.value = '';
   }
 }
 
