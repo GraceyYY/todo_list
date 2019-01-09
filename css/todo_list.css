@@ -26,6 +26,7 @@ li {
   padding-top: 12px;
   border-bottom: solid 1px #c0d3be;
   word-break: break-all;
+  list-style: none;
 }
 
 li:hover {
