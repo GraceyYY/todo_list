@@ -77,6 +77,7 @@ function deleteItem() {
 function clearCompleted() {
   removeCompleted();
   updateCurrentTab();
+  updateLeftItems();
   toggleClearBtn();
 }
 
@@ -110,7 +111,7 @@ function switchToTab(btnId) {
 }
 
 function updateLeftItems() {
-  leftItem.innerText = `Left items: ${localStorage.getItem('active')}`;
+  leftItem.innerText = `Left items: ${getTodoCounts()}`;
 }
 
 function updateCurrentTab() {
