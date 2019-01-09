@@ -1,11 +1,3 @@
-const input = document.getElementById('todo');
-const todoList = document.getElementById('todo_list');
-const activeBtn = document.getElementById('active_btn');
-const allBtn = document.getElementById('all_btn');
-const completedBtn = document.getElementById('completed_btn');
-const clearBtn = document.getElementById('clear_btn');
-const btns = document.getElementsByClassName('btn');
-const leftItem = document.getElementById('left_item');
 let currentTab = 'all';
 initTodo();
 
@@ -47,6 +39,7 @@ function displayAll() {
 }
 
 function enter() {
+  const input = document.getElementById('todo');
   if (event.keyCode === 13 && input.value.length > 0) {
     appendTodo(input.value);
     input.value = '';
@@ -90,16 +83,17 @@ function createItem(index, todo) {
   btn.innerText = 'X';
   btn.classList.add('delete_btn');
   btn.setAttribute('onclick', 'deleteItem()');
-  todoList.appendChild(li);
+  document.getElementById('todo_list').appendChild(li);
   li.appendChild(btn);
   return li;
 }
 
 function clearTodoList() {
-  todoList.innerHTML = '';
+  document.getElementById('todo_list').innerHTML = '';
 }
 
 function switchToTab(btnId) {
+  const btns = document.getElementsByClassName('btn');
   for (let btn of btns) {
     if (btn.id === btnId) {
       btn.classList.add('active');
@@ -111,7 +105,7 @@ function switchToTab(btnId) {
 }
 
 function updateLeftItems() {
-  leftItem.innerText = `Left items: ${getTodoCounts()}`;
+  document.getElementById('left_item').innerText = `Left items: ${getTodoCounts()}`;
 }
 
 function updateCurrentTab() {
@@ -129,6 +123,7 @@ function updateCurrentTab() {
 }
 
 function toggleClearBtn() {
+  const clearBtn = document.getElementById('clear_btn');
   if (getTodoCounts() > 1) {
     clearBtn.classList.remove('hide');
   } else {
