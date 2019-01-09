@@ -57,16 +57,18 @@ function enter() {
 }
 
 function completeItem() {
-  let item = JSON.parse(localStorage.getItem(event.target.id));
-  if (item.state != 'completed') {
-    hasCompleted(event.target.id);
+  if (event.target.nodeName === 'LI') {
+    let item = JSON.parse(localStorage.getItem(event.target.id));
+    if (item.state != 'completed') {
+      hasCompleted(event.target.id);
+    }
+    updateCurrentTab();
+    updateLeftItems();
   }
-  updateCurrentTab();
-  updateLeftItems();
 }
 
 function deleteItem() {
-  removeTodo(event.target.previousSibling.id);
+  removeTodo(event.target.parentNode.id);
   updateCurrentTab();
   updateLeftItems();
   toggleClearBtn();
@@ -88,7 +90,7 @@ function createItem(index, todo) {
   btn.classList.add('delete_btn');
   btn.setAttribute('onclick', 'deleteItem()');
   todoList.appendChild(li);
-  todoList.appendChild(btn);
+  li.appendChild(btn);
   return li;
 }
 
