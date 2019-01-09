@@ -14,7 +14,6 @@ function initTodo() {
 
 function displayList(tab) {
   clearTodoList();
-  toggleClearBtn();
   switch (tab) {
     case 'active':
       switchToTab('active_btn');
@@ -37,6 +36,7 @@ function displayList(tab) {
       });
       break;
   }
+  toggleClearBtn();
 }
 
 function enter() {
