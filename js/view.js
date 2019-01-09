@@ -47,7 +47,7 @@ function displayAll() {
 }
 
 function enter() {
-  if (event.keyCode === 13 && input.value.length > 1) {
+  if (event.keyCode === 13 && input.value.length > 0) {
     appendTodo(input.value);
     input.value = '';
     updateCurrentTab();
