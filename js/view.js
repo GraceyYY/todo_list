@@ -4,7 +4,7 @@ initTodo();
 function initTodo() {
   if (localStorage.getItem('active') != null && localStorage.getItem('completed') != null) {
     toggleClearBtn();
-    updateCurrentTab();
+    displayList(currentTab);
     updateLeftItems();
   } else {
     localStorage.setItem('active', 0);
@@ -12,30 +12,31 @@ function initTodo() {
   }
 }
 
-function displayActiveList() {
-  switchToTab('active_btn');
+function displayList(tab) {
   clearTodoList();
-  getTodos('active').forEach(item => createItem(item.index, item.todo));
-}
-
-function displayCompletedList() {
-  switchToTab('completed_btn');
-  clearTodoList();
-  getTodos('completed').forEach(item => {
-    let li = createItem(item.index, item.todo);
-    li.classList.add('deleted');
-  });
-}
-
-function displayAll() {
-  switchToTab('all_btn');
-  clearTodoList();
-  getTodos('all').forEach(item => {
-    let li = createItem(item.index, item.todo);
-    if (item.todo.state === 'completed') {
-      li.classList.add('deleted');
-    }
-  })
+  toggleClearBtn();
+  switch (tab) {
+    case 'active':
+      switchToTab('active_btn');
+      getTodos('active').forEach(item => createItem(item.index, item.todo));
+      break;
+    case 'completed':
+      switchToTab('completed_btn');
+      getTodos('completed').forEach(item => {
+        let li = createItem(item.index, item.todo);
+        li.classList.add('deleted');
+      });
+      break;
+    default:
+      switchToTab('all_btn');
+      getTodos('all').forEach(item => {
+        let li = createItem(item.index, item.todo);
+        if (item.todo.state === 'completed') {
+          li.classList.add('deleted');
+        }
+      });
+      break;
+  }
 }
 
 function enter() {
@@ -43,7 +44,7 @@ function enter() {
   if (event.keyCode === 13 && input.value.length > 0) {
     appendTodo(input.value);
     input.value = '';
-    updateCurrentTab();
+    displayList(currentTab);
     updateLeftItems();
     toggleClearBtn();
   }
@@ -55,21 +56,22 @@ function completeItem() {
     if (item.state != 'completed') {
       hasCompleted(event.target.id);
     }
-    updateCurrentTab();
+    displayList(currentTab);
     updateLeftItems();
+    toggleClearBtn();
   }
 }
 
 function deleteItem() {
   removeTodo(event.target.parentNode.id);
-  updateCurrentTab();
+  displayList(currentTab);
   updateLeftItems();
   toggleClearBtn();
 }
 
 function clearCompleted() {
   removeCompleted();
-  updateCurrentTab();
+  displayList(currentTab);
   updateLeftItems();
   toggleClearBtn();
 }
@@ -108,23 +110,9 @@ function updateLeftItems() {
   document.getElementById('left_item').innerText = `Left items: ${getTodoCounts()}`;
 }
 
-function updateCurrentTab() {
-  switch (currentTab) {
-    case 'all':
-      displayAll();
-      break;
-    case 'active':
-      displayActiveList();
-      break;
-    case 'completed':
-      displayCompletedList();
-      break;
-  }
-}
-
 function toggleClearBtn() {
   const clearBtn = document.getElementById('clear_btn');
-  if (getTodoCounts() > 1) {
+  if (localStorage.getItem('completed') > 0 && currentTab != 'active') {
     clearBtn.classList.remove('hide');
   } else {
     clearBtn.classList.add('hide');
