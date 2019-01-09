@@ -21,6 +21,7 @@ button {
   font-size: 13px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  outline: none;
 }
 
 #todo_list li {
