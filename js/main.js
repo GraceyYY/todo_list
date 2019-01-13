@@ -1,3 +1,11 @@
+initTodo();
+
+function initTodo() {
+  currentTab = 'all';
+  initLocalStorage();
+  updateTab(currentTab);
+}
+
 function initLocalStorage() {
   if (localStorage.getItem('active') === null && localStorage.getItem('completed') === null) {
     localStorage.setItem('active', 0);

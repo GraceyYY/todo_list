@@ -1,11 +1,3 @@
-initTodo();
-
-function initTodo() {
-  currentTab = 'all';
-  initLocalStorage();
-  updateTab(currentTab);
-}
-
 function createItem(index, todo) {
   let li = document.createElement('li');
   li.innerText = todo.content;
