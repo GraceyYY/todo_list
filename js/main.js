@@ -4,3 +4,7 @@ function initLocalStorage() {
     localStorage.setItem('completed', 0);
   }
 }
+
+function needClearBtn(){
+    return localStorage.getItem('completed') > 0 && currentTab != 'active';
+}

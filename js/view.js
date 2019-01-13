@@ -106,10 +106,5 @@ function updateLeftItems() {
 }
 
 function toggleClearBtn() {
-  const clearBtn = document.getElementById('clear_btn');
-  if (localStorage.getItem('completed') > 0 && currentTab != 'active') {
-    clearBtn.classList.remove('hide');
-  } else {
-    clearBtn.classList.add('hide');
-  }
+  document.getElementById('clear_btn').classList.toggle('hide', !needClearBtn());
 }
