@@ -34,7 +34,7 @@ function toggleActiveTab(tab) {
 }
 
 function updateLeftItems() {
-  document.getElementById('left_item').innerText = `Left items: ${getTodoCounts()}`;
+  document.getElementById('left_item').innerText = `Left items: ${localStorage.getItem('active')}`;
 }
 
 function toggleClearBtn() {
