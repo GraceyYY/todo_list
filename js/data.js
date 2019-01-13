@@ -5,6 +5,8 @@ class Todo {
   }
 }
 
+let currentTab;
+
 function editCounts(name, operation) {
   let count = parseInt(localStorage.getItem(name));
   switch (operation) {
@@ -42,8 +44,8 @@ function hasCompleted(index) {
 }
 
 function removeAllCompletedItems() {
-  getTodos('completed').forEach(item => {
-    removeTodo(item.index);
+  getTodosFrom('completed').forEach(item => {
+    removeTodoItem(item.index);
   });
 }
 

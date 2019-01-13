@@ -1,11 +1,10 @@
-let currentTab = 'all';
+
 initTodo();
 
 function initTodo() {
+  currentTab = 'all';
   initLocalStorage();
-  toggleClearBtn();
-  displayList(currentTab);
-  updateLeftItems();
+  updateTab(currentTab);
 }
 
 function enter() {
@@ -13,8 +12,7 @@ function enter() {
   if (event.keyCode === 13 && input.value.length > 0) {
     appendTodoItem(input.value);
     input.value = '';
-    displayList(currentTab);
-    updateLeftItems();
+    updateTab(currentTab);
   }
 }
 
@@ -24,24 +22,18 @@ function completeItem() {
     if (item.state != 'completed') {
       hasCompleted(event.target.id);
     }
-    displayList(currentTab);
-    updateLeftItems();
-    toggleClearBtn();
+    updateTab(currentTab);
   }
 }
 
 function deleteItem() {
   removeTodoItem(event.target.parentNode.id);
-  displayList(currentTab);
-  updateLeftItems();
-  toggleClearBtn();
+  updateTab(currentTab);
 }
 
 function clearCompleted() {
   removeAllCompletedItems();
-  displayList(currentTab);
-  updateLeftItems();
-  toggleClearBtn();
+  updateTab(currentTab);
 }
 
 function createItem(index, todo) {
