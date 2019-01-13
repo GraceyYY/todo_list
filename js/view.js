@@ -16,26 +16,11 @@ function enter() {
   }
 }
 
-function completeItem() {
-  if (event.target.nodeName === 'LI') {
-    let item = JSON.parse(localStorage.getItem(event.target.id));
-    if (item.state != 'completed') {
-      hasCompleted(event.target.id);
-    }
-    updateTab(currentTab);
-  }
-}
-
-function clearCompleted() {
-  removeAllCompletedItems();
-  updateTab(currentTab);
-}
-
 function createItem(index, todo) {
   let li = document.createElement('li');
   li.innerText = todo.content;
   li.id = index;
-  li.setAttribute('onclick', 'completeItem()');
+  li.setAttribute('onclick', 'completeBtn()');
   let btn = document.createElement('button');
   btn.innerText = 'X';
   btn.classList.add('delete_btn');

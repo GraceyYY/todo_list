@@ -17,14 +17,29 @@ function switchToTab(tab) {
 }
 
 function updateTab(tab) {
-    clearTodoList();
-    switchToTab(tab);
-    displayList(tab);
-    toggleClearBtn();
-    updateLeftItems();
+  clearTodoList();
+  switchToTab(tab);
+  displayList(tab);
+  toggleClearBtn();
+  updateLeftItems();
 }
 
 function deleteBtn() {
   removeTodoItem(event.target.parentNode.id);
   updateTab(currentTab);
+}
+
+function clearBtn() {
+  removeAllCompletedItems();
+  updateTab(currentTab);
+}
+
+function completeBtn() {
+  if (event.target.nodeName === 'LI') {
+    let item = JSON.parse(localStorage.getItem(event.target.id));
+    if (item.state != 'completed') {
+      hasCompleted(event.target.id);
+    }
+    updateTab(currentTab);
+  }
 }
