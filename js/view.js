@@ -8,33 +8,6 @@ function initTodo() {
   updateLeftItems();
 }
 
-function displayList(tab) {
-  clearTodoList();
-  switch (tab) {
-    case 'active':
-      switchToTab('active');
-      getTodosFrom('active').forEach(item => createItem(item.index, item.todo));
-      break;
-    case 'completed':
-      switchToTab('completed');
-      getTodosFrom('completed').forEach(item => {
-        let li = createItem(item.index, item.todo);
-        li.classList.add('deleted');
-      });
-      break;
-    default:
-      switchToTab('all');
-      getTodosFrom('all').forEach(item => {
-        let li = createItem(item.index, item.todo);
-        if (item.todo.state === 'completed') {
-          li.classList.add('deleted');
-        }
-      });
-      break;
-  }
-  toggleClearBtn();
-}
-
 function enter() {
   const input = document.getElementById('todo');
   if (event.keyCode === 13 && input.value.length > 0) {
