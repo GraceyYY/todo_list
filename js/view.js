@@ -6,15 +6,6 @@ function initTodo() {
   updateTab(currentTab);
 }
 
-function enter() {
-  const input = document.getElementById('todo');
-  if (event.keyCode === 13 && input.value.length > 0) {
-    appendTodoItem(input.value);
-    updateTab(currentTab);
-    clearInputBox();
-  }
-}
-
 function createItem(index, todo) {
   let li = document.createElement('li');
   li.innerText = todo.content;

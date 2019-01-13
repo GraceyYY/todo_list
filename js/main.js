@@ -24,6 +24,15 @@ function updateTab(tab) {
   updateLeftItems();
 }
 
+function enter() {
+  const content = document.getElementById('todo').value;
+  if (event.keyCode === 13 && content) {
+    appendTodoItem(content);
+    updateTab(currentTab);
+    clearInputBox();
+  }
+}
+
 function deleteBtn() {
   removeTodoItem(event.target.parentNode.id);
   updateTab(currentTab);
