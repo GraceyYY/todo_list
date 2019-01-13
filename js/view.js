@@ -2,14 +2,10 @@ let currentTab = 'all';
 initTodo();
 
 function initTodo() {
-  if (localStorage.getItem('active') != null && localStorage.getItem('completed') != null) {
-    toggleClearBtn();
-    displayList(currentTab);
-    updateLeftItems();
-  } else {
-    localStorage.setItem('active', 0);
-    localStorage.setItem('completed', 0);
-  }
+  initLocalStorage();
+  toggleClearBtn();
+  displayList(currentTab);
+  updateLeftItems();
 }
 
 function displayList(tab) {
