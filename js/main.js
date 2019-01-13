@@ -8,3 +8,10 @@ function initLocalStorage() {
 function needClearBtn(){
     return localStorage.getItem('completed') > 0 && currentTab != 'active';
 }
+
+function switchToTab(tab) {
+    let prevTab = currentTab;
+    currentTab = tab;
+    toggleActiveTab(prevTab);
+    toggleActiveTab(currentTab);
+}

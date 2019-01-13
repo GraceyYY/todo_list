@@ -12,18 +12,18 @@ function displayList(tab) {
   clearTodoList();
   switch (tab) {
     case 'active':
-      switchToTab('active_btn');
+      switchToTab('active');
       getTodosFrom('active').forEach(item => createItem(item.index, item.todo));
       break;
     case 'completed':
-      switchToTab('completed_btn');
+      switchToTab('completed');
       getTodosFrom('completed').forEach(item => {
         let li = createItem(item.index, item.todo);
         li.classList.add('deleted');
       });
       break;
     default:
-      switchToTab('all_btn');
+      switchToTab('all');
       getTodosFrom('all').forEach(item => {
         let li = createItem(item.index, item.todo);
         if (item.todo.state === 'completed') {
@@ -89,16 +89,8 @@ function clearTodoList() {
   document.getElementById('todo_list').innerHTML = '';
 }
 
-function switchToTab(btnId) {
-  const btns = document.getElementsByClassName('btn');
-  for (let btn of btns) {
-    if (btn.id === btnId) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  }
-  currentTab = btnId.split('_')[0];
+function toggleActiveTab(tab) {
+  document.getElementById(`${tab}_btn`).classList.toggle('active', tab === currentTab);
 }
 
 function updateLeftItems() {
