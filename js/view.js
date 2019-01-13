@@ -1,4 +1,3 @@
-
 initTodo();
 
 function initTodo() {
@@ -11,8 +10,8 @@ function enter() {
   const input = document.getElementById('todo');
   if (event.keyCode === 13 && input.value.length > 0) {
     appendTodoItem(input.value);
-    input.value = '';
     updateTab(currentTab);
+    clearInputBox();
   }
 }
 
@@ -37,6 +36,10 @@ function displayList(tab) {
       li.classList.add('deleted');
     }
   });
+}
+
+function clearInputBox() {
+  document.getElementById('todo').value = '';
 }
 
 function clearTodoList() {
