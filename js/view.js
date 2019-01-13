@@ -17,18 +17,18 @@ function displayList(tab) {
   switch (tab) {
     case 'active':
       switchToTab('active_btn');
-      getTodos('active').forEach(item => createItem(item.index, item.todo));
+      getTodosFrom('active').forEach(item => createItem(item.index, item.todo));
       break;
     case 'completed':
       switchToTab('completed_btn');
-      getTodos('completed').forEach(item => {
+      getTodosFrom('completed').forEach(item => {
         let li = createItem(item.index, item.todo);
         li.classList.add('deleted');
       });
       break;
     default:
       switchToTab('all_btn');
-      getTodos('all').forEach(item => {
+      getTodosFrom('all').forEach(item => {
         let li = createItem(item.index, item.todo);
         if (item.todo.state === 'completed') {
           li.classList.add('deleted');
@@ -42,11 +42,10 @@ function displayList(tab) {
 function enter() {
   const input = document.getElementById('todo');
   if (event.keyCode === 13 && input.value.length > 0) {
-    appendTodo(input.value);
+    appendTodoItem(input.value);
     input.value = '';
     displayList(currentTab);
     updateLeftItems();
-    toggleClearBtn();
   }
 }
 
@@ -63,14 +62,14 @@ function completeItem() {
 }
 
 function deleteItem() {
-  removeTodo(event.target.parentNode.id);
+  removeTodoItem(event.target.parentNode.id);
   displayList(currentTab);
   updateLeftItems();
   toggleClearBtn();
 }
 
 function clearCompleted() {
-  removeCompleted();
+  removeAllCompletedItems();
   displayList(currentTab);
   updateLeftItems();
   toggleClearBtn();

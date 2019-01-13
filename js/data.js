@@ -20,14 +20,14 @@ function editCounts(name, operation) {
   localStorage.setItem(name, count);
 }
 
-function appendTodo(input) {
+function appendTodoItem(input) {
   const index = Date.now();
   let value = JSON.stringify(new Todo(input));
   localStorage.setItem(index, value);
   editCounts('active', 'plus');
 }
 
-function removeTodo(index) {
+function removeTodoItem(index) {
   let item = JSON.parse(localStorage.getItem(index));
   editCounts(item.state, 'minus');
   localStorage.removeItem(index);
@@ -41,7 +41,7 @@ function hasCompleted(index) {
   editCounts('completed', 'plus');
 }
 
-function removeCompleted() {
+function removeAllCompletedItems() {
   getTodos('completed').forEach(item => {
     removeTodo(item.index);
   });
@@ -51,7 +51,7 @@ function getTodoCounts() {
   return parseInt(localStorage.getItem('active')) + parseInt(localStorage.getItem('completed'));
 }
 
-function getTodos(state) {
+function getTodosFrom(state) {
   let counts = getTodoCounts();
   let result = [];
   for (let i = 0; i < counts; i++) {
