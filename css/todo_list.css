@@ -31,7 +31,8 @@ button {
   line-height: 32px;
   border-bottom: solid 1px #c0d3be;
   word-break: break-all;
-  list-style: circle inside;
+  list-style-image: url('../images/circled.png');
+  list-style-position: inside;
 }
 
 #todo_list li:hover {
@@ -73,9 +74,10 @@ button {
   display: none;
 }
 
-.deleted {
+#todo_list .completed {
   color: #4d544c;
   text-decoration: line-through;
+  list-style-image: url('../images/ticked.png');
 }
 
 .delete_btn {
