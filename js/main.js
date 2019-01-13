@@ -17,13 +17,18 @@ function switchToTab(tab) {
 }
 
 function displayList(tab) {
-  clearTodoList();
-  switchToTab(tab);
   getTodosFrom(tab).forEach(item => {
     let li = createItem(item.index, item.todo);
     if (item.todo.state === 'completed') {
       li.classList.add('deleted');
     }
   });
-  toggleClearBtn();
+}
+
+function updateTab(tab) {
+    clearTodoList();
+    switchToTab(tab);
+    displayList(tab);
+    toggleClearBtn();
+    updateLeftItems();
 }
