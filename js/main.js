@@ -23,3 +23,8 @@ function updateTab(tab) {
     toggleClearBtn();
     updateLeftItems();
 }
+
+function deleteBtn() {
+  removeTodoItem(event.target.parentNode.id);
+  updateTab(currentTab);
+}

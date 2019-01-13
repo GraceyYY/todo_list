@@ -26,11 +26,6 @@ function completeItem() {
   }
 }
 
-function deleteItem() {
-  removeTodoItem(event.target.parentNode.id);
-  updateTab(currentTab);
-}
-
 function clearCompleted() {
   removeAllCompletedItems();
   updateTab(currentTab);
@@ -44,7 +39,7 @@ function createItem(index, todo) {
   let btn = document.createElement('button');
   btn.innerText = 'X';
   btn.classList.add('delete_btn');
-  btn.setAttribute('onclick', 'deleteItem()');
+  btn.setAttribute('onclick', 'deleteBtn()');
   document.getElementById('todo_list').appendChild(li);
   li.appendChild(btn);
   return li;
