@@ -16,15 +16,6 @@ function switchToTab(tab) {
   toggleActiveTab(currentTab);
 }
 
-function displayList(tab) {
-  getTodosFrom(tab).forEach(item => {
-    let li = createItem(item.index, item.todo);
-    if (item.todo.state === 'completed') {
-      li.classList.add('deleted');
-    }
-  });
-}
-
 function updateTab(tab) {
     clearTodoList();
     switchToTab(tab);

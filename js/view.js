@@ -50,6 +50,15 @@ function createItem(index, todo) {
   return li;
 }
 
+function displayList(tab) {
+  getTodosFrom(tab).forEach(item => {
+    let li = createItem(item.index, item.todo);
+    if (item.todo.state === 'completed') {
+      li.classList.add('deleted');
+    }
+  });
+}
+
 function clearTodoList() {
   document.getElementById('todo_list').innerHTML = '';
 }
